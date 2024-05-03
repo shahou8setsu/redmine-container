@@ -17,6 +17,7 @@ NOTICE
 !/.gitconfig_shared
 
 !/docker-compose.yaml
+!/.env
 
 !/redmine
 !/redmine/data
