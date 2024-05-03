@@ -17,7 +17,7 @@ services:
         tag: "docker.{{.Name}}"
         fluentd-async-connect: "true"
     ports:
-      - "0.0.0.0:8899:3000"
+      - "0.0.0.0:8000:3000"
     volumes:
       - ./redmine/data:/usr/src/redmine/files/
       - ./redmine/plugins:/usr/src/redmine/plugins/
