@@ -16,6 +16,8 @@ NOTICE
 !/.gitignore_global
 !/.gitconfig_shared
 
+!/docker-compose.yaml
+
 !/redmine
 !/redmine/data
 !/redmine/plugins

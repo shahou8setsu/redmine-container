@@ -1,0 +1,93 @@
+---
+services:
+  redmine:
+    container_name: redmine
+    image: redmica/redmica
+    hostname: redmine-main
+    restart: always
+    environment:
+      - REDMINE_DB_POSTGRES=postgres
+      - REDMINE_DB_USERNAME=redmine
+      - REDMINE_DB_PASSWORD=redmine_te5T
+      - REDMINE_SECRET_KEY_BASE=redmine_1V1aster
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: "docker.{{.Name}}"
+        fluentd-async-connect: "true"
+    ports:
+      - "0.0.0.0:8899:3000"
+    volumes:
+      - ./redmine/data:/usr/src/redmine/files/
+      - ./redmine/plugins:/usr/src/redmine/plugins/
+    depends_on:
+      - postgres
+    networks:
+      - redmine_nw
+      - fluent_nw
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    hostname: redmine-postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      - POSTGRES_PASSWORD=redmine_te5T
+      - POSTGRES_USER=redmine
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: "docker.{{.Name}}"
+        fluentd-async-connect: "true"
+    volumes:
+      - ./postgres/data:/data
+    depends_on:
+      - fluentd
+    networks:
+      - redmine_nw
+      - fluent_nw
+      
+  adminer:
+    container_name: adminer
+    image: adminer
+    hostname: redmine-adminer
+    restart: always
+    ports:
+      - "0.0.0.0:8080:8080"
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: "docker.{{.Name}}"
+        fluentd-async-connect: "true"
+    depends_on:
+      - postgres
+    networks:
+      - redmine_nw
+      - fluent_nw
+      
+  fluentd:
+    container_name: fluentd
+    image: fluentd:v1.16.2-debian-1.1
+    hostname: redmine-fluentd
+    restart: always
+    ports:
+      - "0.0.0.0:24224:24224"
+      - "0.0.0.0:24224:24224/udp"
+    environment:
+      - FLUENTD_CONF=fluent.conf
+    volumes:
+      - ./fluentd/fluent.conf:/fluentd/etc/fluent.conf
+      - ./fluentd/etc:/fluentd/etc/
+      - ./fluentd/log:/fluentd/log
+    networks:
+      - fluent_nw
+      
+networks:
+  redmine_nw:
+    internal: false
+  fluent_nw:
+    internal: true
