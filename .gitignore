@@ -1,0 +1,29 @@
+###
+NOTICE
+.env file should be ignored.
+###
+
+# IGNORE ALL
+/*
+/.**
+
+# WHITE LIST
+
+!/README.md
+!/LICENSE
+!.gitignore
+!.gitkeep
+!/.gitignore_global
+!/.gitconfig_shared
+
+!/redmine
+!/redmine/data
+!/redmine/plugins
+
+!/postgres
+!/postgres/data
+
+!/fluentd
+!/fluentd/etc
+!/fluentd/log
+!/fluentd/fluent.conf
