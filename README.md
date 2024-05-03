@@ -10,9 +10,9 @@ redmie standalone  container using db with adminer &amp; fluentd
 
 ## Installation
 
-1. 
-git clone https://github.com/shahou8setsu/redmine-docker.git
-2. 
-cd redmine-docker
-3.
+1. <br/>
+git clone https://github.com/shahou8setsu/redmine-docker.git <br/>
+2. <br/>
+cd redmine-docker <br/>
+3. <br/>
 docker compose up -d
