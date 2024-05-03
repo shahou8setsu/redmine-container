@@ -3,9 +3,14 @@ redmie standalone  container using db with adminer &amp; fluentd
 
 ## Pre 
 1. docker is already installed. 
-2. Ports are not used: 8000 (for redmine), 8080 (for adminer), 24224 (for fluentd). <br/>
+2. These Ports are not used:
+   8000 & 3000 (for local & redmine) <br/>
+   5432 (for postgres) <br/>
+   8080 (for adminer) <br/>
+   24224 (for fluentd). <br/>
 ※ if those ports are used , you must change ports in docker-compose.yaml .
-3. (optional) git is installed.
+4. (optional) git is installed.
+5. (optional) .env file are modified for your environment.
 
 
 ## Installation
