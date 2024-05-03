@@ -1,2 +1,2 @@
-# redmine-pg
-redmie standalone  container using postgres with adminer &amp; fluentd 
+# redmine-docker
+redmie standalone  container using db with adminer &amp; fluentd 
