@@ -1,5 +1,5 @@
 # redmine-docker
-redmie standalone  container using db with adminer &amp; fluentd 
+redmine standalone  container using postgres with adminer &amp; fluentd 
 
 ## Pre 
 1. docker is already installed. 
