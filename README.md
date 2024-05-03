@@ -1,4 +1,4 @@
-# redmine-docker
+# redmine-docker(postgres)
 redmine standalone  container using postgres with adminer &amp; fluentd 
 
 ## Pre 
